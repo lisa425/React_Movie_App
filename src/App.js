@@ -1,33 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 class App extends React.Component{
-
   state = {
-    count: 0
+    isLoading: true,
+    movies: []
   };
 
-  add = () => {
-    this.setState(current=>({count:current.count+1}));
-  };
-  sub = () => {
-    this.setState(current=>({count:this.state.count-1}));
-  };
   componentDidMount(){
-    console.log("component rendered");
-  }
-  componentDidUpdate(){
-    console.log("I just updated");
-  }
-  componentWillUnmount(){
-    console.log("Goodbye!");
+    setTimeout(() => {
+      this.setState({isLoading:false});
+    },6000);
   }
   render(){
-    console.log("im rendering!");
+    const { isLoading } = this.state;
     return <div>
-      <h1>The number is: {this.state.count}</h1>
-      <button onClick={this.add}>Add</button> 
-      <button onClick={this.sub}>Sub</button>
+    {this.state.isLoding ? "Loding..." : "We are ready"}
     </div>;
   }
 }
